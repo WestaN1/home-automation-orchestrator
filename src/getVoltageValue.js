@@ -4,12 +4,12 @@ const DEFAULT_DEVICE_ID = '3C8427AFD7AA';
 const SWITCHBOT_API_BASE_URL = 'https://api.switch-bot.com';
 
 async function getVoltageValue({
-	deviceId = DEFAULT_DEVICE_ID,
+	miniPlugDeviceId = DEFAULT_DEVICE_ID,
 	token = process.env.SWITCHBOT_TOKEN,
 	secret = process.env.SWITCHBOT_SECRET
 } = {}) {
-	if (!deviceId) {
-		throw new Error('deviceId is required');
+	if (!miniPlugDeviceId) {
+		throw new Error('miniPlugDeviceId is required');
 	}
 
 	if (!token || !secret) {
@@ -18,7 +18,7 @@ async function getVoltageValue({
 
 	const nonce = makeNonce();
 	const timestamp = getUnixTimeString();
-	const path = `/v1.1/devices/${deviceId}/status`;
+	const path = `/v1.1/devices/${miniPlugDeviceId}/status`;
 	const sign = getSignature({ token, secret, timestamp, nonce });
 
 	const response = await fetch(`${SWITCHBOT_API_BASE_URL}${path}`, {
@@ -37,9 +37,9 @@ async function getVoltageValue({
 	}
 
 	const data = await response.json();
-
+	console.log(data?.body?.weight)
 	return {
-		// deviceId,
+		// miniPlugDeviceId,
 		// voltage: data?.body?.voltage,
 		// currentPower: data?.body?.power,
 		weight: data?.body?.weight
