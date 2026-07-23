@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --test",
     "get-device-info": "node --env-file=.env src/localGetDeviceInfo.js",
-    "get-scene-info": "node --env-file=.env src/getSceneInfo.js"
+    "get-scene-info": "node --env-file=.env src/getSceneInfo.js",
+    "execute-scene": "node --env-file=.env src/executeScene.js"
   }
 }
