@@ -7,6 +7,7 @@ const {
 const DEFAULT_SCENE_ID = "e58a3284-b929-47c4-b244-868a49c36e85"
 
 async function executeScene({ 
+    sceneId = DEFAULT_SCENE_ID,
     token = process.env.SWITCHBOT_TOKEN, 
     secret = process.env.SWITCHBOT_SECRET 
 } = {}) {
@@ -16,7 +17,7 @@ async function executeScene({
 
   const nonce = makeNonce();
   const timestamp = getUnixTimeString();
-  const path = '/v1.1/scenes/' + DEFAULT_SCENE_ID + '/execute';
+  const path = '/v1.1/scenes/' + sceneId + '/execute';
   const sign = getSignature({ token, secret, timestamp, nonce });
 
   const response = await fetch(`https://api.switch-bot.com${path}`, {
