@@ -1,0 +1,10 @@
+{
+  "name": "smarthome-lambda-keyword-controller",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AWS Lambda-based keyword trigger controller for SwitchBot-like devices",
+  "scripts": {
+    "test": "node --test",
+    "local:get-device-info": "node --env-file=.env src/localGetDeviceInfo.js"
+  }
+}
