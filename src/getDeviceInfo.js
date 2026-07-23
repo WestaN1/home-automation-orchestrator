@@ -28,3 +28,5 @@ async function getDeviceInfo({ token = process.env.SWITCHBOT_TOKEN, secret = pro
 
   return response.json();
 }
+
+module.exports = { getDeviceInfo };
