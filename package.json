@@ -5,6 +5,7 @@
   "description": "AWS Lambda-based keyword trigger controller for SwitchBot-like devices",
   "scripts": {
     "test": "node --test",
-    "local:get-device-info": "node --env-file=.env src/localGetDeviceInfo.js"
+    "get-device-info": "node --env-file=.env src/localGetDeviceInfo.js",
+    "get-scene-info": "node --env-file=.env src/getSceneInfo.js"
   }
 }
