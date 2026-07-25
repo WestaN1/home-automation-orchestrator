@@ -4,14 +4,14 @@ function resolveIntent(utterance) {
   if (text.includes('ただいま')) {
     return {
       trigger: 'ただいま',
-      action: 'turn_on_living_room_light'
+      action: 'run_arrival_routine'
     };
   }
 
   if (text.includes('いってきます')) {
     return {
       trigger: 'いってきます',
-      action: 'turn_off_living_room_light'
+      action: 'run_departure_routine'
     };
   }
 
