@@ -7,7 +7,7 @@ const DEFAULT_BELOW_SCENE_ID = "84b8a390-0fb0-4c6a-b256-cbc664db7260"
 const DEFAULT_THRESHOLD = 20
 /* 
 指定したプラグミニデバイスの消費電力(weight)が
-threshold以上ならaboveThresholdSCeneを、
+threshold以上ならaboveThresholdSceneを、
 threshold未満ならvelowThresholdSceneを実行する。
 
 引数：
