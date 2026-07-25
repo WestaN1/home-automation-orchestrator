@@ -1,5 +1,5 @@
 const { resolveIntent } = require('./intentResolver');
-const { executeAction } = require('./switchbotClient');
+const { executeAction } = require('./actionExecutor');
 
 exports.handler = async (event) => {
   try {

@@ -1,3 +1,4 @@
+// TODO: Powerの意味が"ON/OFFの電源"と"プラグの電力"の2つの意味で使われてるので、命名をし直す
 const { 
     getSignature, 
     getUnixTimeString, 
@@ -6,7 +7,7 @@ const {
 
 const DEFAULT_DEVICE_ID = "02-202405131652-50559538" // サーキュレータ
 
-async function toggleTVPower({ 
+async function toggleInfraredDevicePower({ 
     deviceId = DEFAULT_DEVICE_ID,
     token = process.env.SWITCHBOT_TOKEN, 
     secret = process.env.SWITCHBOT_SECRET 
@@ -49,7 +50,7 @@ async function toggleTVPower({
 if (require.main === module) {
     (async () => {
         try {
-            const result = await toggleTVPower();
+            const result = await toggleInfraredDevicePower();
             console.log(JSON.stringify(result, null, 2));
         } catch (error) {
             console.error(error.message);
@@ -58,4 +59,4 @@ if (require.main === module) {
     })();
 }
 
-module.exports = { toggleTVPower };
+module.exports = { toggleInfraredDevicePower };
