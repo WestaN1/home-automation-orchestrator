@@ -1,5 +1,5 @@
 const { executePowerBasedScene } = require('./executePowerBasedScene')
-const { getPowerValue } = require('./getPowerValue')
+const { getPowerValue } = require('./isDevicePowerAboveThreshold')
 
 
 async function executeAction(intent) {

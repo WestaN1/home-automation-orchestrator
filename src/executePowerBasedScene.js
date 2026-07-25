@@ -1,12 +1,12 @@
 const { executeScene } = require('./executeScene')
-const { getPowerValue } = require('./getPowerValue')
+const { getPowerValue } = require('./isDevicePowerAboveThreshold')
 
 const DEFAULT_MINIPLUG_DEVICE_ID = "3C8427AFD7AA"
 const DEFAULT_ABOVE_SCENE_ID = "e58a3284-b929-47c4-b244-868a49c36e85"
 const DEFAULT_BELOW_SCENE_ID = "84b8a390-0fb0-4c6a-b256-cbc664db7260"
 const DEFAULT_THRESHOLD = 20
 /* 
-指定したプラグミニデバイスの消費電力(weight)が
+指定したプラグミニデバイスの消費電力(power)が
 threshold以上ならaboveThresholdSceneを、
 threshold未満ならvelowThresholdSceneを実行する。
 
@@ -29,11 +29,11 @@ async function executePowerBasedScene({
     belowThresholdScene = DEFAULT_BELOW_SCENE_ID
 } = {}) {
   
-    const { weight } = await getPowerValue({miniPlugDeviceId});
-    console.log(`weight = ${weight}`)
+    const { power } = await getPowerValue({miniPlugDeviceId});
+    console.log(`power = ${power}`)
     let result
 
-    if(weight >= threshold){
+    if(power >= threshold){
         console.log("abobe-scene is executed");
         result = executeScene({ sceneId: aboveThresholdScene });
     } else {
