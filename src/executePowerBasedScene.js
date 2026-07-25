@@ -1,5 +1,5 @@
 const { executeScene } = require('./executeScene')
-const { getVoltageValue } = require('./getVoltageValue')
+const { getPowerValue } = require('./getPowerValue')
 
 const DEFAULT_MINIPLUG_DEVICE_ID = "3C8427AFD7AA"
 const DEFAULT_ABOVE_SCENE_ID = "e58a3284-b929-47c4-b244-868a49c36e85"
@@ -29,7 +29,7 @@ async function executePowerBasedScene({
     belowThresholdScene = DEFAULT_BELOW_SCENE_ID
 } = {}) {
   
-    const { weight } = await getVoltageValue({miniPlugDeviceId});
+    const { weight } = await getPowerValue({miniPlugDeviceId});
     console.log(`weight = ${weight}`)
     let result
 

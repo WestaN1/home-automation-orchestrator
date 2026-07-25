@@ -1,12 +1,12 @@
 const { executePowerBasedScene } = require('./executePowerBasedScene')
-const { getVoltageValue } = require('./getVoltageValue')
+const { getPowerValue } = require('./getPowerValue')
 
 
 async function executeAction(intent) {
   const action = intent?.action || 'no_op';
 
   //各デバイスの電圧などの状態取得
-  
+
 
 
   if (action === 'no_op') {

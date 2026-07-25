@@ -3,7 +3,7 @@ const { getSignature, getUnixTimeString, makeNonce } = require('./switchbotUtil'
 const DEFAULT_DEVICE_ID = '3C8427AFD7AA';
 const SWITCHBOT_API_BASE_URL = 'https://api.switch-bot.com';
 
-async function getVoltageValue({
+async function getPowerValue({
 	miniPlugDeviceId = DEFAULT_DEVICE_ID,
 	token = process.env.SWITCHBOT_TOKEN,
 	secret = process.env.SWITCHBOT_SECRET
@@ -40,7 +40,7 @@ async function getVoltageValue({
 	console.log(data?.body?.weight)
 	return {
 		// miniPlugDeviceId,
-		// voltage: data?.body?.voltage,
+		// power: data?.body?.power,
 		// currentPower: data?.body?.power,
 		weight: data?.body?.weight
 	};
@@ -49,7 +49,7 @@ async function getVoltageValue({
 if (require.main === module) {
 	(async () => {
 		try {
-			const result = await getVoltageValue();
+			const result = await getPowerValue();
 			console.log(JSON.stringify(result, null, 2));
 		} catch (error) {
 			console.error(error.message);
@@ -58,4 +58,4 @@ if (require.main === module) {
 	})();
 }
 
-module.exports = { getVoltageValue };
+module.exports = { getPowerValue };

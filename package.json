@@ -7,7 +7,7 @@
     "test": "node --test",
     "get-device-info": "node --env-file=.env src/localGetDeviceInfo.js",
     "get-scene-info": "node --env-file=.env src/getSceneInfo.js",
-    "get-voltage-value": "node --env-file=.env src/getVoltageValue.js",
+    "get-power-value": "node --env-file=.env src/getPowerValue.js",
     "execute-scene": "node --env-file=.env src/executeScene.js"
   }
 }
