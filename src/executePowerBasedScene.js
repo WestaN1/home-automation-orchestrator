@@ -1,5 +1,5 @@
 const { executeScene } = require('./executeScene')
-const { getPowerValue } = require('../devices/isDevicePowerAboveThreshold')
+const { getPowerValue } = require('./isDevicePowerAboveThreshold')
 
 const DEFAULT_MINIPLUG_DEVICE_ID = "3C8427AFD7AA"
 const DEFAULT_ABOVE_SCENE_ID = "e58a3284-b929-47c4-b244-868a49c36e85"

@@ -1,5 +1,5 @@
 
-const { isDevicePowerAboveThreshold } = require('../../switchbot/devices/isDevicePowerAboveThreshold')
+const { isDevicePowerAboveThreshold } = require('../isDevicePowerAboveThreshold')
 
 
 /* 
