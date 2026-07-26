@@ -1,4 +1,4 @@
-const { getSignature, getUnixTimeString, makeNonce } = require('./switchbotUtil');
+const { getSignature, getUnixTimeString, makeNonce } = require('../switchbotUtil');
 
 const DEFAULT_DEVICE_ID = '3C8427AFD7AA';
 const SWITCHBOT_API_BASE_URL = 'https://api.switch-bot.com';
@@ -67,4 +67,4 @@ if (require.main === module) {
 	})();
 }
 
-module.exports = { isDevicePowerAboveThreshold };
+module.exports = { isDevicePowerAboveThreshold, getPowerValue };

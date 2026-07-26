@@ -5,9 +5,9 @@
   "description": "AWS Lambda-based keyword trigger controller for SwitchBot-like devices",
   "scripts": {
     "test": "node --test",
-    "get-device-info": "node --env-file=.env src/localGetDeviceInfo.js",
-    "get-scene-info": "node --env-file=.env src/getSceneInfo.js",
-    "get-power-value": "node --env-file=.env src/getPowerValue.js",
-    "execute-scene": "node --env-file=.env src/executeScene.js"
+    "get-device-info": "node --env-file=.env src/switchbot/devices/getDeviceInfo.js",
+    "get-scene-info": "node --env-file=.env src/switchbot/devices/getSceneInfo.js",
+    "get-power-value": "node --env-file=.env src/switchbot/devices/isDevicePowerAboveThreshold.js",
+    "execute-scene": "node --env-file=.env src/switchbot/scenes/executeScene.js"
   }
 }

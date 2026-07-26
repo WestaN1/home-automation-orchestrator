@@ -1,5 +1,5 @@
-const { resolveIntent } = require('./intentResolver');
-const { executeAction } = require('./actionExecutor');
+const { resolveIntent } = require('./application/intentResolver');
+const { executeAction } = require('./application/actionExecutor');
 
 exports.handler = async (event) => {
   try {
