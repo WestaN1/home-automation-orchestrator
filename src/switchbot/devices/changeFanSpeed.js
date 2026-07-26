@@ -2,7 +2,7 @@ const {
     getSignature, 
     getUnixTimeString, 
     makeNonce
-} = require('./switchbotUtil')
+} = require('../switchbotUtil')
 
 const DEFAULT_FAN_ID = '02-202405131652-50559538'
 const DEFAULT_FAN_SPEED_VALUE = 1

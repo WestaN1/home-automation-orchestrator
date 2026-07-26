@@ -5,7 +5,7 @@
 */
 
 const crypto = require('node:crypto');
-const { getSignature, getUnixTimeString, makeNonce} = require('./switchbotUtil')
+const { getSignature, getUnixTimeString, makeNonce} = require('../switchbotUtil')
 
 const DEFAULT_DEVICE_ID = "EB2A2AEB947B"
 

@@ -1,4 +1,4 @@
-const { getSignature, getUnixTimeString, makeNonce } = require('./switchbotUtil');
+const { getSignature, getUnixTimeString, makeNonce } = require('../switchbotUtil');
 
 async function getSceneInfo({
 	token = process.env.SWITCHBOT_TOKEN,

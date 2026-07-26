@@ -3,7 +3,7 @@ const {
     getSignature, 
     getUnixTimeString, 
     makeNonce
-} = require('./switchbotUtil')
+} = require('../switchbotUtil')
 
 const DEFAULT_DEVICE_ID = "02-202405131652-50559538" // サーキュレータ
 

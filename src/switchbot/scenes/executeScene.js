@@ -2,7 +2,7 @@ const {
     getSignature, 
     getUnixTimeString, 
     makeNonce
-} = require('./switchbotUtil')
+} = require('../switchbotUtil')
 
 const DEFAULT_SCENE_ID = "e58a3284-b929-47c4-b244-868a49c36e85"
 

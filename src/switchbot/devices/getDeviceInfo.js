@@ -1,5 +1,5 @@
 const crypto = require('node:crypto');
-const { getSignature, getUnixTimeString, makeNonce} = require('./switchbotUtil')
+const { getSignature, getUnixTimeString, makeNonce} = require('../switchbotUtil')
 
 async function getDeviceInfo({ token = process.env.SWITCHBOT_TOKEN, secret = process.env.SWITCHBOT_SECRET } = {}) {
   if (!token || !secret) {
