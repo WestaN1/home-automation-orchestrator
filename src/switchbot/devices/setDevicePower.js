@@ -4,9 +4,9 @@ const {
     makeNonce
 } = require('../switchbotUtil')
 
-const DEFAULT_DEVICE_ID = process.env.INFRARED_CEILING_LIGHT_ID 
+const DEFAULT_DEVICE_ID = process.env.INFRARED_CEILING_LIGHT_ID // シーリングライト
 
-async function setLightPower({ 
+async function setDevicePower({ 
     deviceId = DEFAULT_DEVICE_ID,
     power = '',
     token = process.env.SWITCHBOT_TOKEN, 
@@ -59,7 +59,7 @@ async function setLightPower({
 if (require.main === module) {
     (async () => {
         try {
-            const result = await setLightPower({power: 'on'});
+            const result = await setDevicePower({power: 'on'});
             console.log(JSON.stringify(result, null, 2));
         } catch (error) {
             console.error(error.message);
@@ -68,4 +68,4 @@ if (require.main === module) {
     })();
 }
 
-module.exports = { setLightPower };
+module.exports = { setDevicePower };
