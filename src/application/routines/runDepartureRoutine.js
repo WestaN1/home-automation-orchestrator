@@ -23,7 +23,7 @@ async function runDepartureRoutine() {
     }
 
     await setDevicePower({
-        deviceID: process.env.TV_PLUG_ID,
+        deviceId: process.env.TV_PLUG_ID,
         power: 'off'
     });
     // TODO: 現状、テレビがONの時はTV_PLUGをトグルした直後にハブの電源をOFFにする。
