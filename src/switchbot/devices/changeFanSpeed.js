@@ -1,8 +1,4 @@
-const { 
-    getSignature, 
-    getUnixTimeString, 
-    makeNonce
-} = require('../switchbotUtil')
+const { requestSwitchBot } = require('../switchbotClient')
 
 const DEFAULT_FAN_ID = process.env.INFRARED_FAN_ID
 const DEFAULT_FAN_SPEED_VALUE = 1
@@ -13,10 +9,6 @@ async function changeFanSpeed({
     token = process.env.SWITCHBOT_TOKEN, 
     secret = process.env.SWITCHBOT_SECRET 
 } = {}) {
-  if (!token || !secret) {
-    throw new Error('SWITCHBOT_TOKEN and SWITCHBOT_SECRET are required');
-  }
-
   let fanSpeed = ''
   switch(fanSpeedValue) { 
     case 1: 
@@ -33,35 +25,18 @@ async function changeFanSpeed({
 
   }
 
-  const nonce = makeNonce();
-  const timestamp = getUnixTimeString();
   const path = '/v1.1/devices/' + fanId + '/commands';
-  const sign = getSignature({ token, secret, timestamp, nonce });
-  const payload = JSON.stringify({
-    command: fanSpeed, 
-    parameter: 'default',
-    commandType: 'command'
-  });
-
-  const response = await fetch(`https://api.switch-bot.com${path}`, {
+  return requestSwitchBot({
+    path,
     method: 'POST',
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-      sign,
-      t: timestamp,
-      nonce
+    body: {
+      command: fanSpeed,
+      parameter: 'default',
+      commandType: 'command'
     },
-    body: payload
+    token,
+    secret
   });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    throw new Error(`SwitchBot API request failed: ${response.status} ${errorBody}`);
-  }
-
-  return response.json();
-
 }
 
 if (require.main === module) {

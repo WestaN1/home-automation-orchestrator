@@ -1,8 +1,4 @@
-const { 
-    getSignature, 
-    getUnixTimeString, 
-    makeNonce
-} = require('../switchbotUtil')
+const { requestSwitchBot } = require('../switchbotClient')
 
 const DEFAULT_DEVICE_ID = process.env.INFRARED_CEILING_LIGHT_ID // シーリングライト
 
@@ -12,54 +8,35 @@ async function setDevicePower({
     token = process.env.SWITCHBOT_TOKEN, 
     secret = process.env.SWITCHBOT_SECRET 
 } = {}) {
-  if (!token || !secret) {
-    throw new Error('SWITCHBOT_TOKEN and SWITCHBOT_SECRET are required');
+  if (!deviceId) {
+    throw new Error('deviceId is required');
   }
-
-  const nonce = makeNonce();
-  const timestamp = getUnixTimeString();
-  const path = '/v1.1/devices/' + deviceId + '/commands';
-  const sign = getSignature({ token, secret, timestamp, nonce });
   
-    if(!['on', 'off'].includes(power)) {
+  if(!['on', 'off'].includes(power)) {
     throw new Error(
-        'power must be either "on" or "off"'
+      'power must be either "on" or "off"'
     )
   }
 
   const command = power === 'on' ? 'turnOn' : 'turnOff'
-
-  const payload = JSON.stringify({
-    command, 
-    parameter: 'default',
-    commandType: 'command'
-  });
-
-  const response = await fetch(`https://api.switch-bot.com${path}`, {
+  const path = '/v1.1/devices/' + deviceId + '/commands';
+  return requestSwitchBot({
+    path,
     method: 'POST',
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-      sign,
-      t: timestamp,
-      nonce
+    body: {
+      command,
+      parameter: 'default',
+      commandType: 'command'
     },
-    body: payload
+    token,
+    secret
   });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    throw new Error(`SwitchBot API request failed: ${response.status} ${errorBody}`);
-  }
-
-  return response.json();
-
 }
 
 if (require.main === module) {
     (async () => {
         try {
-            const result = await setDevicePower({power: 'on'});
+            const result = await setDevicePower({deviceId: process.env.TV_PLUG_ID, power: 'on'});
             console.log(JSON.stringify(result, null, 2));
         } catch (error) {
             console.error(error.message);

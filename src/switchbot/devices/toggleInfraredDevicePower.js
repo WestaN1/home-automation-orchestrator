@@ -1,9 +1,5 @@
 // TODO: Powerの意味が"ON/OFFの電源"と"プラグの電力"の2つの意味で使われてるので、命名をし直す
-const { 
-    getSignature, 
-    getUnixTimeString, 
-    makeNonce
-} = require('../switchbotUtil')
+const { requestSwitchBot } = require('../switchbotClient')
 
 const DEFAULT_DEVICE_ID = process.env.INFRARED_FAN_ID // サーキュレータ
 
@@ -12,39 +8,18 @@ async function toggleInfraredDevicePower({
     token = process.env.SWITCHBOT_TOKEN, 
     secret = process.env.SWITCHBOT_SECRET 
 } = {}) {
-  if (!token || !secret) {
-    throw new Error('SWITCHBOT_TOKEN and SWITCHBOT_SECRET are required');
-  }
-
-  const nonce = makeNonce();
-  const timestamp = getUnixTimeString();
   const path = '/v1.1/devices/' + deviceId + '/commands';
-  const sign = getSignature({ token, secret, timestamp, nonce });
-  const payload = JSON.stringify({
-    command: 'turnOn', // 実際はトグル
-    parameter: 'default',
-    commandType: 'command'
-  });
-
-  const response = await fetch(`https://api.switch-bot.com${path}`, {
+  return requestSwitchBot({
+    path,
     method: 'POST',
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-      sign,
-      t: timestamp,
-      nonce
+    body: {
+      command: 'turnOn', // 実際はトグル
+      parameter: 'default',
+      commandType: 'command'
     },
-    body: payload
+    token,
+    secret
   });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    throw new Error(`SwitchBot API request failed: ${response.status} ${errorBody}`);
-  }
-
-  return response.json();
-
 }
 
 if (require.main === module) {
