@@ -14,7 +14,7 @@ async function runArrivalRoutine() {
     });
 
     await setDevicePower({ 
-        deviceId: process.env.HUB_ID,
+        deviceId: process.env.TV_PLUG_ID,
         power: 'on'
     });
     
