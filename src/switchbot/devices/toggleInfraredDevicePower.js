@@ -5,7 +5,7 @@ const {
     makeNonce
 } = require('../switchbotUtil')
 
-const DEFAULT_DEVICE_ID = "02-202405131652-50559538" // サーキュレータ
+const DEFAULT_DEVICE_ID = process.env.INFRARED_FAN_ID // サーキュレータ
 
 async function toggleInfraredDevicePower({ 
     deviceId = DEFAULT_DEVICE_ID,

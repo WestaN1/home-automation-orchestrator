@@ -4,8 +4,9 @@ const {
     makeNonce
 } = require('../switchbotUtil')
 
-const DEFAULT_FAN_ID = '02-202405131652-50559538'
+const DEFAULT_FAN_ID = process.env.INFRARED_FAN_ID
 const DEFAULT_FAN_SPEED_VALUE = 1
+
 async function changeFanSpeed({ 
     fanId = DEFAULT_FAN_ID,
     fanSpeedValue = DEFAULT_FAN_SPEED_VALUE,

@@ -4,7 +4,7 @@ const {
     makeNonce
 } = require('../switchbotUtil')
 
-const DEFAULT_DEVICE_ID = "02-202403191317-73842793" // シーリングライト
+const DEFAULT_DEVICE_ID = process.env.INFRARED_CEILING_LIGHT_ID 
 
 async function setLightPower({ 
     deviceId = DEFAULT_DEVICE_ID,
